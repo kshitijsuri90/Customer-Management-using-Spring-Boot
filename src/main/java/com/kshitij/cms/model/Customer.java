@@ -1,10 +1,28 @@
 package com.kshitij.cms.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
 public class Customer {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @JsonProperty("id")
     private int customerID;
+    @JsonProperty("firstName")
     private String customerFirstName;
+    @JsonProperty("lastName")
     private String customerLastName;
+    @JsonProperty("email")
     private String customerEmail;
+
+    public Customer() {
+    }
 
     public Customer(String customerFirstName, String customerLastName, String customerEmail) {
         this.customerFirstName = customerFirstName;
@@ -25,6 +43,7 @@ public class Customer {
     }
 
     public void setCustomerFirstName(String customerFirstName) {
+        System.out.println(customerFirstName);
         this.customerFirstName = customerFirstName;
     }
 

@@ -15,23 +15,28 @@ public class CustomerResource {
     private CustomerService customerService;
 
     @PostMapping
-    public Customer addCustomer(@RequestBody Customer customer){
+    public Customer addCustomer(@RequestBody Customer customer) {
         return customerService.addCustomer(customer);
     }
 
     @GetMapping
-    public List<Customer> getCustomerList(){
+    public List<Customer> getCustomerList() {
         return customerService.getCustomerList();
     }
 
     @GetMapping(value = "/{customerID}")
-    public Customer getCustomer(@PathVariable("customerID") int customerID){
+    public Customer getCustomer(@PathVariable("customerID") int customerID) {
         return customerService.getCustomer(customerID);
     }
 
     @PutMapping(value = "/{customerID}")
-    public Customer updateCustomer(@PathVariable("customerID") int customerID, @RequestBody Customer customer){
+    public Customer updateCustomer(@PathVariable("customerID") int customerID, @RequestBody Customer customer) {
         return customerService.updateCustomer(customerID, customer);
+    }
+
+    @DeleteMapping(value = "/{customerID}")
+    public void deleteCustomer(@PathVariable("customerID") int customerID) {
+        customerService.deleteCustomer(customerID);
     }
 
 }
